@@ -22,17 +22,12 @@ public class FoShizzleGame {
       model.put("template", "templates/foshizzle.vtl");
 
       String userInput = request.queryParams("userInput");
-
-      String whoWins = whoWins(playerOne, playerTwo);
-
-      model.put("playerOne", playerOne);
-      model.put("playerTwo", playerTwo);
-      model.put("whoWins", whoWins(playerOne, playerTwo));
+      model.put("outPut", foShizzle(userInput));
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
   }
 
-  public static String FoShizzle(String userInput){
+  public static String foShizzle(String userInput){
     char[] inputArray = userInput.toCharArray();
     char[] firstChar= java.util.Arrays.copyOfRange(inputArray, 0, 1);
     String firstLetter = new String(firstChar);
